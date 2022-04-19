@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Keys = sequelize.define('ReadingStats', {
+    const ReadingStats = sequelize.define('ReadingStats', {
         pageCount: {
             type: DataTypes.INTEGER
         },
@@ -15,5 +15,5 @@ module.exports = (sequelize, DataTypes) => {
         ReadingStats.belongsTo(models.Books)
     }
 
-    return Keys;
+    return ReadingStats;
 }

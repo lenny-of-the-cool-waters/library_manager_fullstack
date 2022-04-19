@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Keys = sequelize.define('Keys', {
+    const Reviews = sequelize.define('Reviews', {
         rating: {
             type: DataTypes.FLOAT,
         },
@@ -12,5 +12,5 @@ module.exports = (sequelize, DataTypes) => {
         Reviews.belongsTo(models.Books);
     }
     
-    return Keys;
+    return Reviews;
 }

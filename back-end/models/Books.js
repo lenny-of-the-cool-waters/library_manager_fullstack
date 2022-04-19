@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Books = sequelize.define("Keys", {
+  const Books = sequelize.define("Books", {
     id: {
       primaryKey: true,
       type: DataTypes.INTEGER,
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     bookSeries: {
-      type: Datatype.STRING,
+      type: DataTypes.STRING,
     },
   });
 
@@ -33,5 +33,5 @@ module.exports = (sequelize, DataTypes) => {
       Books.hasOne(models.ReadingStats)
   }
 
-  return Keys;
+  return Books;
 };
