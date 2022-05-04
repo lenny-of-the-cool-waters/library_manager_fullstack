@@ -17,6 +17,11 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
+
+// Routing
+const userRouter = require('./routes/Users');
+app.use('/auth', userRouter);
+
 const db = require('./models');
 db.sequelize.sync()
 .then(() => {

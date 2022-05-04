@@ -14,6 +14,10 @@ module.exports = (sequelize, Sequelize,) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
+    resetPassword: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
+    },
     email: {
       type: Sequelize.STRING
     },

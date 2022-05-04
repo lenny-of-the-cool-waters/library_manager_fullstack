@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 // components
 import Layout from "./Layout";
@@ -7,6 +7,7 @@ import Layout from "./Layout";
 // pages
 import Error from "../pages/error";
 import Login from "../pages/login";
+import Dashboard from "../pages/dashboard";
 
 // context
 import { useUserState } from "../context/UserContext";
@@ -15,7 +16,7 @@ export default function App() {
   // global
   var { isAuthenticated } = useUserState();
 
-  return (
+  /* return (
     <HashRouter>
       <Switch>
         <Route exact path="/" render={() => <Redirect to="/app/dashboard" />} />
@@ -29,15 +30,23 @@ export default function App() {
         <Route component={Error} />
       </Switch>
     </HashRouter>
+  ); */
+
+  return (
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Dashboard/>} />
+      </Routes>
+    </Router>
   );
 
   // #######################################################################
 
-  function PrivateRoute({ component, ...rest }) {
+  /* function PrivateRoute({ component, ...rest }) {
     return (
       <Route
         {...rest}
-        render={props =>
+        render={(props) =>
           isAuthenticated ? (
             React.createElement(component, props)
           ) : (
@@ -53,13 +62,13 @@ export default function App() {
         }
       />
     );
-  }
+  } */
 
-  function PublicRoute({ component, ...rest }) {
+  /* function PublicRoute({ component, ...rest }) {
     return (
       <Route
         {...rest}
-        render={props =>
+        render={(props) =>
           isAuthenticated ? (
             <Redirect
               to={{
@@ -72,5 +81,5 @@ export default function App() {
         }
       />
     );
-  }
+  } */
 }
