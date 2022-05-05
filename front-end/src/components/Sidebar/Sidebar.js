@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Drawer, IconButton, List } from "@material-ui/core";
+import { useLocation } from "react-router-dom";
+import { Drawer, IconButton, List } from "@mui/material";
 import {
   Home as HomeIcon,
   NotificationsNone as NotificationsIcon,
@@ -10,9 +11,8 @@ import {
   LibraryBooks as LibraryIcon,
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
-} from "@material-ui/icons";
-import { useTheme } from "@material-ui/styles";
-import { withRouter } from "react-router-dom";
+} from "@mui/icons-material";
+import { useTheme } from "@mui/styles";
 import classNames from "classnames";
 
 // styles
@@ -30,36 +30,51 @@ import {
 } from "../../context/LayoutContext";
 
 const structure = [
-  { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
+  { id: 0, label: "Dashboard", link: "/dashboard", icon: <HomeIcon /> },
   {
     id: 1,
     label: "Typography",
-    link: "/app/typography",
+    link: "/typography",
     icon: <TypographyIcon />,
   },
-  { id: 2, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
+  { id: 2, label: "Tables", link: "/tables", icon: <TableIcon /> },
   {
     id: 3,
     label: "Notifications",
-    link: "/app/notifications",
+    link: "/notifications",
     icon: <NotificationsIcon />,
   },
   {
     id: 4,
     label: "UI Elements",
-    link: "/app/ui",
+    link: "/ui",
     icon: <UIElementsIcon />,
     children: [
-      { label: "Icons", link: "/app/ui/icons" },
-      { label: "Charts", link: "/app/ui/charts" },
-      { label: "Maps", link: "/app/ui/maps" },
+      { label: "Icons", link: "/ui/icons" },
+      { label: "Charts", link: "/ui/charts" },
+      { label: "Maps", link: "/ui/maps" },
     ],
   },
   { id: 5, type: "divider" },
   { id: 6, type: "title", label: "HELP" },
-  { id: 7, label: "Library", link: "https://flatlogic.com/templates", icon: <LibraryIcon /> },
-  { id: 8, label: "Support", link: "https://flatlogic.com/forum", icon: <SupportIcon /> },
-  { id: 9, label: "FAQ", link: "https://flatlogic.com/forum", icon: <FAQIcon /> },
+  {
+    id: 7,
+    label: "Library",
+    link: "https://flatlogic.com/templates",
+    icon: <LibraryIcon />,
+  },
+  {
+    id: 8,
+    label: "Support",
+    link: "https://flatlogic.com/forum",
+    icon: <SupportIcon />,
+  },
+  {
+    id: 9,
+    label: "FAQ",
+    link: "https://flatlogic.com/forum",
+    icon: <FAQIcon />,
+  },
   { id: 10, type: "divider" },
   { id: 11, type: "title", label: "PROJECTS" },
   {
@@ -82,18 +97,18 @@ const structure = [
   },
 ];
 
-function Sidebar({ location }) {
-  var classes = useStyles();
-  var theme = useTheme();
+function Sidebar() {
+  const classes = useStyles();
+  const theme = useTheme();
+  let location = window.location;
 
   // global
-  var { isSidebarOpened } = useLayoutState();
-  var layoutDispatch = useLayoutDispatch();
+  const { isSidebarOpened } = useLayoutState();
+  const layoutDispatch = useLayoutDispatch();
+  //  local
+  const [isPermanent, setPermanent] = useState(true);
 
-  // local
-  var [isPermanent, setPermanent] = useState(true);
-
-  useEffect(function() {
+  useEffect(() => {
     window.addEventListener("resize", handleWindowWidthChange);
     handleWindowWidthChange();
     return function cleanup() {
@@ -118,7 +133,7 @@ function Sidebar({ location }) {
     >
       <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>
-        <IconButton onClick={() => toggleSidebar(layoutDispatch)}>
+        <IconButton onClick={() => toggleSidebar(layoutDispatch)} size="large">
           <ArrowBackIcon
             classes={{
               root: classNames(classes.headerIcon, classes.headerIconCollapse),
@@ -127,7 +142,7 @@ function Sidebar({ location }) {
         </IconButton>
       </div>
       <List className={classes.sidebarList}>
-        {structure.map(link => (
+        {structure.map((link) => (
           <SidebarLink
             key={link.id}
             location={location}
@@ -139,11 +154,10 @@ function Sidebar({ location }) {
     </Drawer>
   );
 
-  // ##################################################################
   function handleWindowWidthChange() {
-    var windowWidth = window.innerWidth;
-    var breakpointWidth = theme.breakpoints.values.md;
-    var isSmallScreen = windowWidth < breakpointWidth;
+    let windowWidth = window.innerWidth;
+    let breakpointWidth = theme.breakpoints.values.md;
+    let isSmallScreen = windowWidth < breakpointWidth;
 
     if (isSmallScreen && isPermanent) {
       setPermanent(false);
@@ -153,4 +167,4 @@ function Sidebar({ location }) {
   }
 }
 
-export default withRouter(Sidebar);
+export default Sidebar;

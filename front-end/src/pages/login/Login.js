@@ -8,8 +8,8 @@ import {
   Tab,
   TextField,
   Fade,
-} from "@material-ui/core";
-import { withRouter } from "react-router-dom";
+} from "@mui/material";
+// import { withRouter } from "react-router-dom";
 import classnames from "classnames";
 
 // styles
@@ -23,18 +23,18 @@ import google from "../../images/google.svg";
 import { useUserDispatch, loginUser } from "../../context/UserContext";
 
 function Login(props) {
-  var classes = useStyles();
+  let classes = useStyles();
 
   // global
-  var userDispatch = useUserDispatch();
+  const userDispatch = useUserDispatch();
 
   // local
-  var [isLoading, setIsLoading] = useState(false);
-  var [error, setError] = useState(null);
-  var [activeTabId, setActiveTabId] = useState(0);
-  var [nameValue, setNameValue] = useState("");
-  var [loginValue, setLoginValue] = useState("admin@flatlogic.com");
-  var [passwordValue, setPasswordValue] = useState("password");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [activeTabId, setActiveTabId] = useState(0);
+  const [nameValue, setNameValue] = useState("");
+  const [loginValue, setLoginValue] = useState("admin@flatlogic.com");
+  const [passwordValue, setPasswordValue] = useState("password");
 
   return (
     <Grid container className={classes.container}>
@@ -56,7 +56,7 @@ function Login(props) {
           </Tabs>
           {activeTabId === 0 && (
             <React.Fragment>
-              <Typography variant="h1" className={classes.greeting}>
+              <Typography letiant="h1" className={classes.greeting}>
                 Good Morning, User
               </Typography>
               <Button size="large" className={classes.googleButton}>
@@ -82,7 +82,7 @@ function Login(props) {
                   },
                 }}
                 value={loginValue}
-                onChange={e => setLoginValue(e.target.value)}
+                onChange={(e) => setLoginValue(e.target.value)}
                 margin="normal"
                 placeholder="Email Adress"
                 type="email"
@@ -97,7 +97,7 @@ function Login(props) {
                   },
                 }}
                 value={passwordValue}
-                onChange={e => setPasswordValue(e.target.value)}
+                onChange={(e) => setPasswordValue(e.target.value)}
                 margin="normal"
                 placeholder="Password"
                 type="password"
@@ -118,10 +118,10 @@ function Login(props) {
                         passwordValue,
                         props.history,
                         setIsLoading,
-                        setError,
+                        setError
                       )
                     }
-                    variant="contained"
+                    letiant="contained"
                     color="primary"
                     size="large"
                   >
@@ -140,10 +140,10 @@ function Login(props) {
           )}
           {activeTabId === 1 && (
             <React.Fragment>
-              <Typography variant="h1" className={classes.greeting}>
+              <Typography letiant="h1" className={classes.greeting}>
                 Welcome!
               </Typography>
-              <Typography variant="h2" className={classes.subGreeting}>
+              <Typography letiant="h2" className={classes.subGreeting}>
                 Create your account
               </Typography>
               <Fade in={error}>
@@ -160,7 +160,7 @@ function Login(props) {
                   },
                 }}
                 value={nameValue}
-                onChange={e => setNameValue(e.target.value)}
+                onChange={(e) => setNameValue(e.target.value)}
                 margin="normal"
                 placeholder="Full Name"
                 type="text"
@@ -175,7 +175,7 @@ function Login(props) {
                   },
                 }}
                 value={loginValue}
-                onChange={e => setLoginValue(e.target.value)}
+                onChange={(e) => setLoginValue(e.target.value)}
                 margin="normal"
                 placeholder="Email Adress"
                 type="email"
@@ -190,7 +190,7 @@ function Login(props) {
                   },
                 }}
                 value={passwordValue}
-                onChange={e => setPasswordValue(e.target.value)}
+                onChange={(e) => setPasswordValue(e.target.value)}
                 margin="normal"
                 placeholder="Password"
                 type="password"
@@ -208,7 +208,7 @@ function Login(props) {
                         passwordValue,
                         props.history,
                         setIsLoading,
-                        setError,
+                        setError
                       )
                     }
                     disabled={
@@ -217,7 +217,7 @@ function Login(props) {
                       nameValue.length === 0
                     }
                     size="large"
-                    variant="contained"
+                    letiant="contained"
                     color="primary"
                     fullWidth
                     className={classes.createAccountButton}
@@ -235,7 +235,7 @@ function Login(props) {
                 size="large"
                 className={classnames(
                   classes.googleButton,
-                  classes.googleButtonCreating,
+                  classes.googleButtonCreating
                 )}
               >
                 <img src={google} alt="google" className={classes.googleIcon} />
@@ -244,12 +244,12 @@ function Login(props) {
             </React.Fragment>
           )}
         </div>
-        <Typography color="primary" className={classes.copyright}>
+        {/* <Typography color="primary" className={classes.copyright}>
         © 2014-{new Date().getFullYear()} <a style={{ textDecoration: 'none', color: 'inherit' }} href="https://flatlogic.com" rel="noopener noreferrer" target="_blank">Flatlogic</a>, LLC. All rights reserved.
-        </Typography>
+        </Typography> */}
       </div>
     </Grid>
   );
 }
 
-export default withRouter(Login);
+export default Login;
