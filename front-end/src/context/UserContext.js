@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
+import { useNavigate } from 'react-router';
 
 const UserStateContext = createContext();
 const UserDispatchContext = createContext();
@@ -46,7 +47,7 @@ function useUserDispatch() {
     return context
 }
 
-function loginUser(dispatch, login, password, history, setIsLoading, setError) {
+function loginUser(dispatch, login, password, navigate, setIsLoading, setError) {
     setError(false);
     setIsLoading(true);
   
@@ -56,8 +57,9 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
         setError(null)
         setIsLoading(false)
         dispatch({ type: 'LOGIN_SUCCESS' })
-  
-        history.push('/dashboard')
+
+        // history.push('/dashboard')
+        navigate('/dashboard');
       }, 2000);
     } else {
       dispatch({ type: "LOGIN_FAILURE" });
@@ -66,10 +68,10 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
     }
   }
   
-  function signOut(dispatch, history) {
+  function signOut(dispatch, navigate) {
     localStorage.removeItem("id_token");
     dispatch({ type: "SIGN_OUT_SUCCESS" });
-    history.push("/login");
+    navigate("/login");
   }
 
   export { UserProvider, useUserState, useUserDispatch, loginUser, signOut };

@@ -1,5 +1,6 @@
 import React from "react";
-import { Outlet, } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router";
 import classnames from "classnames";
 import { Box, IconButton, Link } from "@mui/material";
 import Icon from "@mdi/react";
@@ -34,11 +35,12 @@ import { useLayoutState } from "../../context/LayoutContext";
 const Layout = (props) => {
   const classes = useStyles();
   const layoutState = useLayoutState();
+  const navigate = useNavigate();
 
   return (
     <div className={classes.root}>
       <>
-        <Header history={props.history} />
+        <Header navigate={navigate} />
         <Sidebar />
         <div
           className={classnames(classes.content, {

@@ -9,7 +9,7 @@ import {
   TextField,
   Fade,
 } from "@mui/material";
-// import { withRouter } from "react-router-dom";
+import { useNavigate } from "react-router";
 import classnames from "classnames";
 
 // styles
@@ -24,6 +24,7 @@ import { useUserDispatch, loginUser } from "../../context/UserContext";
 
 function Login(props) {
   let classes = useStyles();
+  let navigate = useNavigate();
 
   // global
   const userDispatch = useUserDispatch();
@@ -116,7 +117,7 @@ function Login(props) {
                         userDispatch,
                         loginValue,
                         passwordValue,
-                        props.history,
+                        navigate,
                         setIsLoading,
                         setError
                       )
@@ -206,7 +207,7 @@ function Login(props) {
                         userDispatch,
                         loginValue,
                         passwordValue,
-                        props.history,
+                        navigate,
                         setIsLoading,
                         setError
                       )
