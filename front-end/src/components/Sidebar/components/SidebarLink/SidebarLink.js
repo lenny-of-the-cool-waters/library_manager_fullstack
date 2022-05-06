@@ -32,7 +32,9 @@ export default function SidebarLink({
 
   // local
   const [isOpen, setIsOpen] = useState(false);
-  let isLinkActive = link && (location.pathname === link || location.pathname.indexOf(link) !== -1);
+  let isLinkActive =
+    link &&
+    (location.pathname === link || location.pathname.indexOf(link) !== -1);
 
   if (type === "title")
     return (

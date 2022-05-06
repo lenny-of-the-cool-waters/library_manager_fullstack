@@ -25,11 +25,11 @@ export default function Widget({
   noWidgetShadow,
   ...props
 }) {
-  var classes = useStyles();
+  let classes = useStyles();
 
   // local
-  var [moreButtonRef, setMoreButtonRef] = useState(null);
-  var [isMoreMenuOpen, setMoreMenuOpen] = useState(false);
+  const [moreButtonRef, setMoreButtonRef] = useState(null);
+  const [isMoreMenuOpen, setMoreMenuOpen] = useState(false);
 
   return (
     <div className={classes.widgetWrapper} style={style && {...style}}>
@@ -54,7 +54,7 @@ export default function Widget({
                   aria-owns="widget-menu"
                   aria-haspopup="true"
                   onClick={() => setMoreMenuOpen(true)}
-                  buttonRef={setMoreButtonRef}
+                  ref={setMoreButtonRef}
                   size="large">
                   <MoreIcon />
                 </IconButton>
