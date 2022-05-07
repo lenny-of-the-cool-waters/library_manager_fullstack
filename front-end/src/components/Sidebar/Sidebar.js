@@ -37,7 +37,7 @@ const structure = [
     link: "/typography",
     icon: <TypographyIcon />,
   },
-  { id: 2, label: "Tables", link: "/tables", icon: <TableIcon /> },
+  { id: 2, label: "Book List", link: "/books", icon: <TableIcon /> },
   {
     id: 3,
     label: "Notifications",
@@ -55,7 +55,7 @@ const structure = [
       { label: "Maps", link: "/ui/maps" },
     ],
   },
-  { id: 5, type: "divider" },
+  /* { id: 5, type: "divider" },
   { id: 6, type: "title", label: "HELP" },
   {
     id: 7,
@@ -74,7 +74,7 @@ const structure = [
     label: "FAQ",
     link: "https://flatlogic.com/forum",
     icon: <FAQIcon />,
-  },
+  }, */
   { id: 10, type: "divider" },
   { id: 11, type: "title", label: "PROJECTS" },
   {
@@ -107,6 +107,7 @@ function Sidebar() {
   const layoutDispatch = useLayoutDispatch();
   //  local
   const [isPermanent, setPermanent] = useState(true);
+  const [isMobile, setMobile] = useState(false);
 
   useEffect(() => {
     window.addEventListener("resize", handleWindowWidthChange);
@@ -141,7 +142,9 @@ function Sidebar() {
           />
         </IconButton>
       </div>
-      <List className={classes.sidebarList}>
+      <List
+        className={isMobile ? classes.sidebarListMobile : classes.sidebarList}
+      >
         {structure.map((link) => (
           <SidebarLink
             key={link.id}
@@ -158,6 +161,12 @@ function Sidebar() {
     let windowWidth = window.innerWidth;
     let breakpointWidth = theme.breakpoints.values.md;
     let isSmallScreen = windowWidth < breakpointWidth;
+
+    if (windowWidth <= theme.breakpoints.values.md) {
+      setMobile(true);
+    } else {
+      setMobile(false);
+    }
 
     if (isSmallScreen && isPermanent) {
       setPermanent(false);

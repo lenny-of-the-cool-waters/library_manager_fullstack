@@ -1,5 +1,5 @@
 import defaultTheme from "./default";
-import { createTheme, adaptV4Theme } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 
 const overrides = {
   typography: {
@@ -25,7 +25,7 @@ const overrides = {
 };
 
 const themes = {
-  default: createTheme(adaptV4Theme({ ...defaultTheme, ...overrides })),
+  default: createTheme({ ...defaultTheme, ...overrides }),
 };
 
 export default themes;

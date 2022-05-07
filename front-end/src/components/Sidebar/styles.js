@@ -28,14 +28,14 @@ export default makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: "hidden",
-    width: theme.spacing(7) + 40,
-    [theme.breakpoints.down('xl')]: {
+    width: theme.spacing(10),
+    [theme.breakpoints.down('lg')]: {
       width: drawerWidth,
     },
   },
   toolbar: {
     ...theme.mixins.toolbar,
-    [theme.breakpoints.down('xl')]: {
+    [theme.breakpoints.down('lg')]: {
       display: "none",
     },
   },
@@ -43,9 +43,12 @@ export default makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
-  /* sidebarList: {
-    marginTop: theme.spacing(6),
-  }, */
+  sidebarList: {
+    marginTop: theme.spacing(2),
+  },
+  sidebarListMobile: {
+    marginTop: theme.spacing(2),
+  },
   mobileBackButton: {
     marginTop: theme.spacing(0.5),
     marginLeft: 18,

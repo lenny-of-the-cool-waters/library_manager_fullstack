@@ -347,7 +347,7 @@ export default function Dashboard(props) {
                   onChange={(e) => setMainChartState(e.target.value)}
                   input={
                     <OutlinedInput
-                      labelWidth={0}
+                      labelwidth={0}
                       classes={{
                         notchedOutline: classes.mainChartSelectRoot,
                         input: classes.mainChartSelect,
