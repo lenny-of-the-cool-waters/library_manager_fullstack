@@ -9,6 +9,7 @@ import Icon from "@mdi/react";
 import {
   mdiFacebook as FacebookIcon,
   mdiTwitter as TwitterIcon,
+  mdiLinkedin as LinkedinIcon,
   mdiGithub as GithubIcon,
 } from "@mdi/js";
 
@@ -59,43 +60,33 @@ const Layout = (props) => {
             <div>
               <Link
                 color={"primary"}
-                href={"https://flatlogic.com/"}
-                target={"_blank"}
+                href={"/"}
                 className={classes.link}
               >
-                Flatlogic
+                Home
               </Link>
               <Link
                 color={"primary"}
-                href={"https://flatlogic.com/about"}
-                target={"_blank"}
+                href={"/"}
                 className={classes.link}
               >
-                About Us
-              </Link>
-              <Link
-                color={"primary"}
-                href={"https://flatlogic.com/blog"}
-                target={"_blank"}
-                className={classes.link}
-              >
-                Blog
+                About 
               </Link>
             </div>
             <div>
               <Link
-                href={"https://www.facebook.com/flatlogic"}
+                href={"https://www.linkedin.com/in/lenny-githenya"}
                 target={"_blank"}
               >
-                <IconButton aria-label="facebook" size="large">
-                  <Icon path={FacebookIcon} size={1} color="#6E6E6E99" />
+                <IconButton aria-label="LinkedIn" size="large">
+                  <Icon path={LinkedinIcon} size={1} color="#6E6E6E99" />
                 </IconButton>
               </Link>
-              <Link href={"https://twitter.com/flatlogic"} target={"_blank"}>
+              {/* <Link href={"https://twitter.com/flatlogic"} target={"_blank"}>
                 <IconButton aria-label="twitter" size="large">
                   <Icon path={TwitterIcon} size={1} color="#6E6E6E99" />
                 </IconButton>
-              </Link>
+              </Link> */}
               <Link href={"https://github.com/flatlogic"} target={"_blank"}>
                 <IconButton
                   aria-label="github"
