@@ -8,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         timesRead: {
             type: DataTypes.INTEGER
+        },
+        status: {
+            type: DataTypes.STRING
         }
     })
 

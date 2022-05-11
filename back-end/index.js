@@ -20,7 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routing
 const userRouter = require('./routes/Users');
+const bookRouter = require('./routes/Books');
 app.use('/auth', userRouter);
+app.use('/books', bookRouter);
 
 const db = require('./models');
 db.sequelize.sync()
